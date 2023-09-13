@@ -5,12 +5,13 @@ import { viewController } from '../controllers/views.js';
 import { likeVideoController, getAllLikeVideoController, deleteLikedVideoController } from '../controllers/likeVideo.js';
 import { watchLaterController, getAllWatchLaterController, deleteWatchLaterController } from '../controllers/watchLater.js';
 import { historyController, getAllHistoryController, clearHistoryController } from '../controllers/history.js';
-import upload from '../Helpers/fileHelpers.js';
+import { uploadVideoToStorage, upload } from '../Helpers/fileHelpers.js';
 import auth from '../middleware/auth.js';
 
 const routes = express.Router();
 
-routes.post("/uploadVideo", auth, upload.single("file"),uploadVideo);
+// routes.post("/uploadVideo", auth, upload.single("file"),uploadVideo);
+routes.post("/uploadVideo", auth, upload.single("file"), uploadVideoToStorage, uploadVideo);
 routes.get("/getvideos", getAllVideos);
 routes.patch('/like/:id', auth, likeController);
 routes.patch('/view/:id', viewController);
