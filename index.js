@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import userRoutes from './routes/user.js';
 import videoRoutes from './routes/video.js';
 import commentRoutes from './routes/comment.js';
+import subscriptionRoutes from './routes/subscription.js'; 
 import path from 'path';
 
 dotenv.config();
@@ -27,7 +28,7 @@ app.use(bodyParser.json());
 app.use('/user', userRoutes);
 app.use('/video', videoRoutes);
 app.use('/comment', commentRoutes);
-
+app.use('/subscriptions', subscriptionRoutes);
 
 const PORT = process.env.PORT;
 
